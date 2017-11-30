@@ -23,7 +23,6 @@ export default function(self) {
       }
     },
     '/heroes': function() {
-      // console.log('Hero List')
       const state = self.state
       if (!state.heroes.length) {
         fetchHeroes()

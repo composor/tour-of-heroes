@@ -62,7 +62,6 @@ export default class App extends Component {
     if (value) {
       const selectedHero = this.state.selectedHero
       selectedHero.name = value
-      console.log(selectedHero)
       this.setState({selectedHero})
     }
   }
