@@ -3,6 +3,7 @@ import HeroDashboard from './hero-dashboard'
 import HeroList from './hero-list'
 import HeroDetail from './hero-detail'
 import setupRoutes from '../utils/routes'
+import fetchHeroes from '../utils/fetch-heroes'
 
 export default class App extends Component {
   constructor(props) {
@@ -21,31 +22,40 @@ export default class App extends Component {
     return (
       <div class="app-root">
         {
-          state.activeComponent === 'dashboard' && <HeroDashboard 
-            heroes={this.state.heroes}
-            search={this.search.bind(this)}
-            searchResults={this.state.searchResults} 
-            blurSearchInput={this.blurSearchInput.bind(this)} />
+          state.activeComponent === 'dashboard' && 
+            <HeroDashboard 
+              heroes={this.state.heroes}
+              search={this.search.bind(this)}
+              searchResults={this.state.searchResults} 
+              blurSearchInput={this.blurSearchInput.bind(this)} />
         }
         {
-          state.activeComponent === 'heroes' && <HeroList 
-            heroes={this.state.heroes} 
-            deleteItem={this.deleteItem.bind(this)} 
-            addHero={this.addHero.bind(this)} />
+          state.activeComponent === 'heroes' && 
+            <HeroList 
+              heroes={this.state.heroes} 
+              deleteItem={this.deleteItem.bind(this)} 
+              addHero={this.addHero.bind(this)} />
         }
         {
-          state.activeComponent === 'detail' && <HeroDetail 
-            hero={this.state.selectedHero} 
-            deleteItem={this.deleteItem}
-            onHeroNameChange={this.onHeroNameChange.bind(this)} 
-            resetName={this.resetName.bind(this)} 
-            saveName={this.saveName.bind(this)} />
+          state.activeComponent === 'detail' && 
+            <HeroDetail 
+              hero={this.state.selectedHero} 
+              deleteItem={this.deleteItem}
+              onHeroNameChange={this.onHeroNameChange.bind(this)} 
+              resetName={this.resetName.bind(this)} 
+              saveName={this.saveName.bind(this)} />
         }
       </div>
     )
   }
 
   componentWasCreated() {
+    // Fetch data for heroes:
+    fetchHeroes()
+      .then(heroes => {
+        this.setState({heroes})
+      })
+    // Setup routes:
     setupRoutes(this)
   }
 
