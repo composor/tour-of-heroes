@@ -3,7 +3,7 @@ import {Routie} from 'webix-routie'
 
 export default function(self) {
   routie({
-    '': function() {
+    '/': function() {
       self.setState({activeComponent: 'dashboard'})
     },
 
