@@ -1,6 +1,5 @@
 import {h, Component} from 'composi'
 
-
 export default function HeroList({heroes, deleteItem, addHero}) {
 
   return (

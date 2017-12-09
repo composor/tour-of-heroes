@@ -18,8 +18,7 @@ export default function HeroDashboard({heroes, search, searchResults, blurSearch
         }
       </div>
       <HeroSearch 
-        search={search} 
-        heroes={heroes}
+        search={search}
         searchResults={searchResults}
         blurSearchInput={blurSearchInput} />
     </div>

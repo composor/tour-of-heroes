@@ -59,6 +59,19 @@ export default class App extends Component {
     setupRoutes(this)
   }
 
+  addHero(e) {
+    const input = e.target.parentNode.querySelector('#add-hero')
+    const value = input.value
+    if (value) {
+      const lastId = this.state.heroes[this.state.heroes.length -1].id
+      const newHero = {id: String(parseInt(lastId) + 1), name: value}
+      const heroes = this.state.heroes
+      heroes.push(newHero)
+      this.setState({heroes})
+      input.value = ''
+    }
+  }
+
   deleteItem(e) {
     const id = e.target.dataset.id
     const heroes = this.state.heroes
@@ -84,19 +97,6 @@ export default class App extends Component {
 
   saveName(e) {
     window.location.hash = '#/heroes'
-  }
-
-  addHero(e) {
-    const input = e.target.parentNode.querySelector('#add-hero')
-    const value = input.value
-    if (value) {
-      const lastId = this.state.heroes[this.state.heroes.length -1].id
-      const newHero = {id: String(parseInt(lastId) + 1), name: value}
-      const heroes = this.state.heroes
-      heroes.push(newHero)
-      this.setState({heroes})
-      input.value = ''
-    }
   }
 
   search(e) {
