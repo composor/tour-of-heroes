@@ -1,7 +1,7 @@
-import {Routie} from 'webix-routie'
+import {Router} from 'composi-router'
 
 export default function(app) {
-  routie({
+  router({
     '/': function() {
       app.setState({activeComponent: 'dashboard'})
     },
