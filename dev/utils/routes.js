@@ -18,8 +18,10 @@ export default function(app) {
       const state = app.state
       const position = state.heroes.findIndex(person => person.id === id)
       const hero = state.heroes[position]
-      hero.originalName = hero.name
-      app.setState({activeComponent: 'detail', selectedHero: hero})
+      try {
+        hero.originalName = hero.name
+        app.setState({activeComponent: 'detail', selectedHero: hero})
+      } catch(err) {}
     }
   })
 }
