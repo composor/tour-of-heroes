@@ -49,7 +49,7 @@ export default class App extends Component {
     )
   }
 
-  componentWasCreated() {
+  componentDidMount() {
     // Fetch data for heroes:
     fetchHeroes()
       .then(heroes => {
